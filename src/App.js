@@ -5,9 +5,10 @@ import SearchInput from "./components/SearchInput";
 export const App = () => {
   const [students, setStudents] = useState([]);
   const [getStudents, setGetStudents] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [searchNames, setSearchNames] = useState("");
   const [searchTags, setSearchTags] = useState("");
+  const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     fetch("https://api.hatchways.io/assessment/students")
@@ -36,7 +37,7 @@ export const App = () => {
       return;
     }
 
-    const filtered = students.filter(({ firstName, lastName, tags }) => {
+    const searching = students.filter(({ firstName, lastName, tags }) => {
       const GetName =
         searchNames.length === 0 ||
         (firstName + " " + lastName)
@@ -51,7 +52,7 @@ export const App = () => {
       return GetName && GetTag;
     });
 
-    setGetStudents(filtered);
+    setGetStudents(searching);
   }, [students, searchNames, searchTags]);
 
   return (
