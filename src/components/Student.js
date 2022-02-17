@@ -18,7 +18,7 @@ const Student = ({
   const [tagInput, setTagInput] = useState("");
 
   const addTag = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newTags = [...tags, tagInput];
     setTagInput("");
     if (tags.includes(tagInput)) return;
@@ -43,7 +43,7 @@ const Student = ({
   };
 
   return (
-    <card>
+    <div>
       <div onClick={() => toggleExtended((state) => !state)}>
         <img src={pic} alt={`${firstName} ${lastName}'s profile`} />
         <div>
@@ -70,7 +70,7 @@ const Student = ({
           placeholder="Add a tag"
         />
       </form>
-    </card>
+    </div>
   );
 };
 
