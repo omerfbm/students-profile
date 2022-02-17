@@ -1,4 +1,5 @@
 import Student from "./Student";
+import "./index.css";
 
 const AllStudents = ({ loading, getStudents, setStudents }) => {
   if (loading) {
@@ -18,7 +19,7 @@ const AllStudents = ({ loading, getStudents, setStudents }) => {
   }
 
   return (
-    <li>
+    <div >
       {getStudents.map((student) => (
         <Student
           key={student.email}
@@ -26,7 +27,7 @@ const AllStudents = ({ loading, getStudents, setStudents }) => {
           {...student}
         />
       ))}
-    </li>
+    </div>
   );
 };
 

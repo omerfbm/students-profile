@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GradesList from "./AllGrades";
-import TagsList from "./AllTags";
+import AllTags from "./AllTags";
+import "./index.css";
 
 const Student = ({
   firstName,
@@ -43,33 +44,40 @@ const Student = ({
   };
 
   return (
-    <div>
-      <div onClick={() => setDispayGrades((state) => !state)}>
-        <img src={pic} alt={`${firstName} ${lastName}'s profile`} />
-        <div>
-          <div>
-            <p>{`${firstName} ${lastName}`}</p>
-            <p>{displayGrades ? "-" : "+"}</p>
+    <div className="border-b-2">
+      <div className="text-2xl py-4 relative">
+        <img
+          src={pic}
+          alt={`${firstName} ${lastName}'s profile`}
+          className="rounded-full border-2 h-28 w-28 absolute"
+        />
+        <div className="ml-40">
+          <div className="flex items-center justify-between">
+            <h2 className="font-bold mr-2">{`${firstName} ${lastName}`}</h2>
+            <p
+              className="text-5xl cursor-pointer"
+              onClick={() => setDispayGrades((state) => !state)}
+            >
+              {displayGrades ? "-" : "+"}
+            </p>
           </div>
           <p>{`Email: ${email}`}</p>
           <p>{`Company: ${company}`}</p>
           <p>{`Skill: ${skill}`}</p>
           <p>{`Average: ${average.toFixed(2)}`}</p>
+          <div>{displayGrades && <GradesList grades={grades} />}</div>
+          <div>{tags.length > 0 && <AllTags tags={tags} />}</div>
+          <form onSubmit={addTag}>
+            <input
+              className="border-b-2 outline-none py-4"
+              type="text"
+              onChange={(e) => setTagInput(e.target.value)}
+              value={tagInput}
+              placeholder="Add a tag"
+            />
+          </form>
         </div>
       </div>
-
-      {displayGrades && <GradesList grades={grades} />}
-
-      {tags.length > 0 && <TagsList tags={tags} />}
-
-      <form onSubmit={addTag}>
-        <input
-          type="text"
-          onChange={(e) => setTagInput(e.target.value)}
-          value={tagInput}
-          placeholder="Add a tag"
-        />
-      </form>
     </div>
   );
 };

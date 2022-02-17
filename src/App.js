@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AllStudents from "./components/AllStudents";
 import SearchBar from "./components/SearchBar";
-
+import "./App.css";
 export const App = () => {
   const [students, setStudents] = useState([]);
   const [getStudents, setGetStudents] = useState([]);
@@ -53,22 +53,26 @@ export const App = () => {
   }, [students, searchNames, searchTags]);
 
   return (
-    <>
-      <SearchBar
-        search={searchNames}
-        setSearch={setSearchNames}
-        placeholderText="Search by name"
-      />
-      <SearchBar
-        search={searchTags}
-        setSearch={setSearchTags}
-        placeholderText="Search by tag"
-      />
-      <AllStudents
-        loading={loading}
-        getStudents={getStudents}
-        setStudents={setStudents}
-      />
-    </>
+    <div className="flex items-center justify-center  p-20 bg-gray-100 min-h-screen ">
+      <div className=" bg-white rounded-xl p-2 w-2/4 overflow-y-scroll outer shadow-lg">
+        <div className="flex flex-col py-5">
+          <SearchBar
+            search={searchNames}
+            setSearch={setSearchNames}
+            placeholderText="Search by name"
+          />
+          <SearchBar
+            search={searchTags}
+            setSearch={setSearchTags}
+            placeholderText="Search by tag"
+          />
+        </div>
+        <AllStudents
+          loading={loading}
+          getStudents={getStudents}
+          setStudents={setStudents}
+        />
+      </div>
+    </div>
   );
 };
