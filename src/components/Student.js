@@ -18,7 +18,7 @@ const Student = ({
   const [tagInput, setTagInput] = useState("");
 
   const addTag = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const newTags = [...tags, tagInput];
     setTagInput("");
     if (tags.includes(tagInput)) return;
@@ -44,19 +44,19 @@ const Student = ({
 
   return (
     <card>
-      <row onClick={() => toggleExtended((state) => !state)}>
+      <div onClick={() => toggleExtended((state) => !state)}>
         <img src={pic} alt={`${firstName} ${lastName}'s profile`} />
         <div>
-          <row>
+          <div>
             <p>{`${firstName} ${lastName}`}</p>
             <p>{extended ? "-" : "+"}</p>
-          </row>
-          <text>{`Email: ${email}`}</text>
-          <text>{`Company: ${company}`}</text>
-          <text>{`Skill: ${skill}`}</text>
-          <text>{`Average: ${average.toFixed(2)}`}</text>
+          </div>
+          <p>{`Email: ${email}`}</p>
+          <p>{`Company: ${company}`}</p>
+          <p>{`Skill: ${skill}`}</p>
+          <p>{`Average: ${average.toFixed(2)}`}</p>
         </div>
-      </row>
+      </div>
 
       {extended && <GradesList grades={grades} />}
 

@@ -3,24 +3,26 @@ import StudentsList from './components/StudentsList'
 import SearchInput from './components/SearchInput'
 
 
-const App = () => {
-	const [students, updateStudents] = useState([])
-	const [filteredStudents, updateFilteredStudents] = useState([])
+export const App = () => {
+	const [students, setStudents] = useState([])
+	const [getStudents, setGetStudents] = useState([])
 	const [loading, setLoading] = useState(true)
 	const [searchNames, setSearchNames] = useState("")
 	const [searchTags, setSearchTags] = useState("")
 
 	useEffect(() => {
 		fetch("https://api.hatchways.io/assessment/students")
-		.then(resp => resp.json())
-		.then((jsonResp) => {
-			updateStudents(
-				jsonResp.students.map((student) => {
+		.then(response => response.json())
+		.then((json) => {
+			setStudents(
+				json.students.map((student) => {
 					const { grades } = student
+					// console.log(student)
 					return {
 						...student,
-						average: grades.reduce( (a,b) => parseInt(a)+parseInt(b) , 0 ) / grades.length,
+						average: grades.reduce( (a,b) => parseInt(a)+parseInt(b)) / grades.length,
 						tags: []
+						
 					}
 				})
 			)
@@ -30,7 +32,7 @@ const App = () => {
 
 	useEffect(() => {
 		if (searchNames.length === 0 && searchTags.length === 0) {
-			updateFilteredStudents(students)
+			setGetStudents(students)
 			return
 		}
 
@@ -40,16 +42,15 @@ const App = () => {
 			return nameMatch && tagMatch
 		})
 
-		updateFilteredStudents(filtered)
+		setGetStudents(filtered)
 	}, [students, searchNames, searchTags])
 
 	return (
 		<>
 			<SearchInput search={searchNames} setSearch={setSearchNames} placeholderText="Search by name" />
 			<SearchInput search={searchTags} setSearch={setSearchTags} placeholderText="Search by tag" />
-			<StudentsList loading={loading} filteredStudents={filteredStudents} updateStudents={updateStudents} />
+			<StudentsList loading={loading} getStudents={getStudents} setStudents={setStudents} />
 		</>
 	)
 }
 
-export default App

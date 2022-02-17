@@ -1,22 +1,33 @@
-import Student from './Student'
+import Student from "./Student";
 
-
-
-
-const StudentsList = ({ loading, filteredStudents, updateStudents }) => {
-    if (loading) {
-        return <li><h1>Loading...</h1></li>
-    }
-
-    if (filteredStudents.length === 0) {
-        return <li><h1>&#x1F50D; There are no results to display!</h1></li>
-    }
-
+const StudentsList = ({ loading, getStudents, setStudents }) => {
+  if (loading) {
     return (
-        <li>
-            {filteredStudents.map(student => <Student key={student.email} updateStudents={updateStudents} {...student} />)}
-        </li>
-    )
-}
+      <li>
+        <h1>Loading...</h1>
+      </li>
+    );
+  }
 
-export default StudentsList
+  if (setStudents.length === 0) {
+    return (
+      <li>
+        <h1>Not Found</h1>
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      {getStudents.map((student) => (
+        <Student
+          key={student.email}
+          updateStudents={setStudents}
+          {...student}
+        />
+      ))}
+    </li>
+  );
+};
+
+export default StudentsList;
