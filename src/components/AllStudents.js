@@ -1,5 +1,4 @@
 import Student from "./Student";
-import "./index.css";
 
 const AllStudents = ({ loading, getStudents, setStudents }) => {
   if (loading) {
@@ -19,7 +18,7 @@ const AllStudents = ({ loading, getStudents, setStudents }) => {
   }
 
   return (
-    <div >
+    <div>
       {getStudents.map((student) => (
         <Student
           key={student.email}

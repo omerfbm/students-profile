@@ -1,7 +1,6 @@
 import { useState } from "react";
 import GradesList from "./AllGrades";
 import AllTags from "./AllTags";
-import "./index.css";
 
 const Student = ({
   firstName,
@@ -45,15 +44,18 @@ const Student = ({
 
   return (
     <div className="border-b-2">
-      <div className="text-2xl py-4 relative">
+      <div className="text-sm py-2 relative">
         <img
           src={pic}
           alt={`${firstName} ${lastName}'s profile`}
           className="rounded-full border-2 h-28 w-28 absolute"
         />
-        <div className="ml-40">
+        <div className="ml-40 font-medium info">
           <div className="flex items-center justify-between">
-            <h2 className="font-bold mr-2">{`${firstName} ${lastName}`}</h2>
+            <h2
+              className="font-extrabold text-2xl   mr-2 Students"
+              style={{ textTransform: "uppercase" }}
+            >{`${firstName} ${lastName}`}</h2>
             <p
               className="text-5xl cursor-pointer"
               onClick={() => setDispayGrades((state) => !state)}

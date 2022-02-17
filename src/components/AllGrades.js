@@ -1,8 +1,7 @@
-import "./index.css";
 const AllGrades = ({ grades }) => {
   return (
     <div className="grades">
-      <p className="my-5">Grades:</p>
+      <p className="mt-3">Grades:</p>
       {grades.map((grade, i) => (
         <div key={i}>
           <div className="flex flex-wrap">

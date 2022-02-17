@@ -54,7 +54,7 @@ export const App = () => {
 
   return (
     <div className="flex items-center justify-center  p-20 bg-gray-100 min-h-screen ">
-      <div className=" bg-white rounded-xl p-2 w-2/4 overflow-y-scroll outer shadow-lg">
+      <div className=" bg-white rounded-xl p-2 w-2/4 overflow-y-scroll overflow-x-hidden min-w-fit outer shadow-lg">
         <div className="flex flex-col py-5">
           <SearchBar
             search={searchNames}
