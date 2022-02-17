@@ -3,17 +3,17 @@ import Student from "./Student";
 const AllStudents = ({ loading, getStudents, setStudents }) => {
   if (loading) {
     return (
-      <li>
+      <div>
         <h1>Loading...</h1>
-      </li>
+      </div>
     );
   }
 
-  if (setStudents.length === 0) {
+  if (getStudents.length === 0) {
     return (
-      <li>
-        <h1>Not Found</h1>
-      </li>
+      <div className="flex items-center justify-center ">
+        <h1 className="font-bold text-3xl">Not Found</h1>
+      </div>
     );
   }
 
