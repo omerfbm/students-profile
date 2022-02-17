@@ -1,4 +1,4 @@
-const GradesList = ({grades}) => {
+const AllGrades = ({grades}) => {
     return (
         <div>
             <p>Grades</p>
@@ -14,4 +14,4 @@ const GradesList = ({grades}) => {
     );
 };
 
-export default GradesList;
+export default AllGrades;

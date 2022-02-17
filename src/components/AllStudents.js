@@ -1,6 +1,6 @@
 import Student from "./Student";
 
-const StudentsList = ({ loading, getStudents, setStudents }) => {
+const AllStudents = ({ loading, getStudents, setStudents }) => {
   if (loading) {
     return (
       <li>
@@ -30,4 +30,4 @@ const StudentsList = ({ loading, getStudents, setStudents }) => {
   );
 };
 
-export default StudentsList;
+export default AllStudents;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import StudentsList from "./components/StudentsList";
-import SearchInput from "./components/SearchInput";
+import AllStudents from "./components/AllStudents";
+import SearchBar from "./components/SearchBar";
 
 export const App = () => {
   const [students, setStudents] = useState([]);
@@ -8,7 +8,6 @@ export const App = () => {
   const [searchNames, setSearchNames] = useState("");
   const [searchTags, setSearchTags] = useState("");
   const [loading, setLoading] = useState(true);
- 
 
   useEffect(() => {
     fetch("https://api.hatchways.io/assessment/students")
@@ -16,8 +15,8 @@ export const App = () => {
       .then((json) => {
         setStudents(
           json.students.map((student) => {
-            const {grades} = student;
-            console.log(student)
+            const { grades } = student;
+            console.log(student);
             return {
               ...student,
               average:
@@ -38,11 +37,9 @@ export const App = () => {
     }
 
     const searching = students.filter(({ firstName, lastName, tags }) => {
-      const GetName =
-        searchNames.length === 0 ||
-        (firstName + " " + lastName)
-          .toLowerCase()
-          .includes(searchNames.toLowerCase());
+      const GetName = (firstName + " " + lastName)
+        .toLowerCase()
+        .includes(searchNames.toLowerCase());
       const GetTag =
         searchTags.length === 0 ||
         (tags.length > 0 &&
@@ -57,17 +54,17 @@ export const App = () => {
 
   return (
     <>
-      <SearchInput
+      <SearchBar
         search={searchNames}
         setSearch={setSearchNames}
         placeholderText="Search by name"
       />
-      <SearchInput
+      <SearchBar
         search={searchTags}
         setSearch={setSearchTags}
         placeholderText="Search by tag"
       />
-      <StudentsList
+      <AllStudents
         loading={loading}
         getStudents={getStudents}
         setStudents={setStudents}

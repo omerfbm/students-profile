@@ -1,5 +1,5 @@
 
-const SearchInput = ({ search, setSearch, placeholderText="Search" }) => {
+const SearchBar = ({ search, setSearch, placeholderText="Search" }) => {
     return (
         <input
             type="search"
@@ -10,4 +10,4 @@ const SearchInput = ({ search, setSearch, placeholderText="Search" }) => {
     )
 }
 
-export default SearchInput
+export default SearchBar

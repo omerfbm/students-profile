@@ -1,6 +1,6 @@
 import { useState } from "react";
-import GradesList from "./GradesList";
-import TagsList from "./TagsList";
+import GradesList from "./AllGrades";
+import TagsList from "./AllTags";
 
 const Student = ({
   firstName,
@@ -14,7 +14,7 @@ const Student = ({
   tags,
   updateStudents,
 }) => {
-  const [extended, toggleExtended] = useState(false);
+  const [displayGrades, setDispayGrades] = useState(false);
   const [tagInput, setTagInput] = useState("");
 
   const addTag = (e) => {
@@ -44,12 +44,12 @@ const Student = ({
 
   return (
     <div>
-      <div onClick={() => toggleExtended((state) => !state)}>
+      <div onClick={() => setDispayGrades((state) => !state)}>
         <img src={pic} alt={`${firstName} ${lastName}'s profile`} />
         <div>
           <div>
             <p>{`${firstName} ${lastName}`}</p>
-            <p>{extended ? "-" : "+"}</p>
+            <p>{displayGrades ? "-" : "+"}</p>
           </div>
           <p>{`Email: ${email}`}</p>
           <p>{`Company: ${company}`}</p>
@@ -58,7 +58,7 @@ const Student = ({
         </div>
       </div>
 
-      {extended && <GradesList grades={grades} />}
+      {displayGrades && <GradesList grades={grades} />}
 
       {tags.length > 0 && <TagsList tags={tags} />}
 

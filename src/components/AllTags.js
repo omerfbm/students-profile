@@ -1,4 +1,4 @@
-const TagsList = ({ tags }) => (
+const AllTags = ({ tags }) => (
   <div>
     <row>
       {tags.map((tag) => (
@@ -8,4 +8,4 @@ const TagsList = ({ tags }) => (
   </div>
 );
 
-export default TagsList;
+export default AllTags;
